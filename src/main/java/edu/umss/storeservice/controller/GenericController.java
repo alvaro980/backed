@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;
+import javax.websocket.server.PathParam;
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
@@ -65,7 +66,7 @@ public abstract class GenericController<E extends ModelBase, D extends DtoBase<E
     }
 
     @GetMapping
-    protected List<D> getAll() {
+    protected List<D> getAll(@PathParam("featured") String featured) {
         return toDto(getService().findAll());
     }
 
